@@ -1,6 +1,7 @@
 <?php 
 namespace App\Http\Service\offres;
-use App\Http\Resources\OfferResource;
+
+use App\Http\Resources\offers\OfferResource;
 use App\Models\Offer;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,4 +39,20 @@ class OffresService {
         return response()->json(['message'=>'تم حذف الخصم بنجاح ']);
     }
 
+
+
+     //get the sum for offers  جلب مجموع الخصومات ككل
+
+    
+    public function getAllOfferForSchool()
+    {
+        $schoolId = auth()->user()->school_id;
+
+        $offers = Offer::where('school_id', $schoolId)->get();
+        $total = $offers->sum('value');
+
+        return response()->json([
+            'total' => $total,
+        ]);
+    }
 }

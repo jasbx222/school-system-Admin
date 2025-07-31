@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Resources\cost;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class CostResource extends JsonResource
+{
+    /**{
+ 
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'cost' => $this->cost,
+            'semester' => $this->semester->title,
+            'created_at' => $this->created_at?->toDateTimeString(),
+        ];
+    }
+}

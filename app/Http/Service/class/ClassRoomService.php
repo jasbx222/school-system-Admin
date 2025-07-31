@@ -22,6 +22,12 @@ class ClassRoomService {
     ], 200);
 }
  
+
+public function getAllStudentForClass($class){
+    return response()->json([
+        'students'=>$class->students
+    ]);
+}
  
 
 public function store( $request){

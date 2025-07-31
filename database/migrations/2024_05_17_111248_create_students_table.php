@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('full_name')->unique();
             $table->string('mother_name');
             $table->unsignedBigInteger('school_id');
             $table->text('profile_image_url')->nullable();

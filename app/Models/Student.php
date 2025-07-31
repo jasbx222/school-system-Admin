@@ -70,35 +70,10 @@ class Student extends Model
     {
         return $this->invoices()->sum('value');
     }
-    public function getRestOfInvoicesAttribute()
-    {
-        $semesterCost = ClassroomSemester::where('class_room_id', $this->class_room_id)
-            ->where('semester_id', $this->semester->id)->first();
-        $cost = 0;
-        if ($this->offer) {
-            $cost = $semesterCost ? $semesterCost->cost - (($semesterCost->cost * $this->offer->value) / 100) : 0;
-        } else {
-            $cost = $semesterCost ? $semesterCost->cost : 0;
-        }
-        return $cost - $this->invoices()->sum('value');
-    }
-    public function getCostOfSemesterAttribute()
-    {
-        $semesterCost =  ClassroomSemester::where('class_room_id', $this->class_room_id)
-            ->where('semester_id', $this->semester->id)->first();
-        return $semesterCost ? $semesterCost->cost : 0;
-    }
+   
+   
 
-    public function getCostOfSemesterAfterOfferAttribute()
-    {
-        $semesterCost =  ClassroomSemester::where('class_room_id', $this->class_room_id)
-            ->where('semester_id', $this->semester->id)->first();
-        if ($this->offer) {
-            return $semesterCost ? $semesterCost->cost - (($semesterCost->cost * $this->offer->value) / 100) : 0;
-        } else {
-            return $semesterCost ? $semesterCost->cost : 0;
-        }
-    }
+   
 
     public function attendanceSummary()
 {
@@ -106,5 +81,12 @@ class Student extends Model
         ->selectRaw('status, count(*) as total')
         ->groupBy('status');
 }
+public function installments(){
+    return $this->hasMany(Installment::class);
+}
 
+public function result (){
+    return $this->hasOne(Result::class);
+
+}
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Service\auth;
+
+use App\Http\Resources\auth\LoginResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +20,14 @@ class AuthService{
         $tokenName = 'API Token for ' . $user->email;
 
        $token = $user->createToken($tokenName)->plainTextToken;
-        return [
-            'user' => $user,
-            'token' => $token
-        ];
+        return response()->json([
+            'user'=>new LoginResource($user),
+            'token'=>$token
+        ],200);
     }
 
+
+    
     public function profile(){
         return response()->json([
             'profile'=>Auth::user()

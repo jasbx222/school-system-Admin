@@ -49,7 +49,38 @@ class StudentService{
 
    
 
-   
+   // get total student for the school 
+    public function getAllStudentsForSchool()
+    {
+        $schoolId = auth()->user()->school_id;
+        $students = Student::where('school_id', $schoolId)->get();
 
+    return response()->json([
+                'students' => $students
+            ], 200);
+    }
+
+
+    // get the student by his id  
+
+
+    public function getStudentById($id)
+    {
+        $schoolId = auth()->user()->school_id;
+
+        $student = Student::where('school_id', $schoolId)
+            ->where('id', $id)
+            ->first();
+
+        if (!$student) {
+            return response()->json([
+                'message' => 'الطالب غير موجود أو لا يخص مدرستك.'
+            ], 404);
+        }
+
+        return response()->json([
+            'student' => $student,
+        ]);
+    }
     
 }
