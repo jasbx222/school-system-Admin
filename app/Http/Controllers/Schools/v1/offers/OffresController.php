@@ -8,6 +8,9 @@ use App\Http\Service\offres\OffresService;
 use App\Models\Offer;
 class OffresController extends Controller
 {
+    //الخصومات
+
+    
     private $offer;
 
     public function __construct(OffresService $offers)

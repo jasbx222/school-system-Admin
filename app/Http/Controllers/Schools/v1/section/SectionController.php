@@ -7,6 +7,7 @@ use App\Http\Service\sections\SectionService;
 
 class SectionController  extends Controller
 {
+ //الشعب
 
     private $section;
     public function __construct(SectionService $sections)

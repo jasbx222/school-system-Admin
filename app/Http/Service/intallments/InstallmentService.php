@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class InstallmentService
 {
-   public function index()
+  public function index()
 {
-    $installments = Installment::with('parts')
+    $installments = Installment::with(['student', 'parts'])
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
@@ -20,10 +20,12 @@ class InstallmentService
         'data' => InstallmentResource::collection($installments->items()),
         'prev_page' => $installments->previousPageUrl(),
         'current_page' => $installments->currentPage(),
-    
     ]);
 }
-//جلب مجمووع الخصومات كلها  للطلاب ككل 
+
+
+
+//جلب مجمووع الاقساط المدفوعة  كلها  للطلاب ككل 
 
 
 
@@ -40,7 +42,7 @@ public function getAllInsSum(){
 
 
 
-//جلب كل الاقساط الدفوعة
+//جلب كل الاقساط الدفوعة+
 public function getAllInsPaid(){
     $paid= "paid";
        $installments = Installment::where('status',$paid)->get();
@@ -69,7 +71,7 @@ public function getAllInsPending(){
 
 
 
-    //هنا راح نجيب الخصم وونقض من القسط على اساس قيمة الخصم للطالب 
+    //هنا راح نجيب الخصم وو من القسط على اساس قيمة الخصم للطالب 
  public function store($request)
 {
     $validated = $request->validated();
@@ -130,9 +132,11 @@ public function getAllInsPending(){
     }
 
 
-    public function getInstallmentsStudent($student)
-    {
+  public function getInstallmentsStudent($id)
+{
+    $student = Student::with('installments')->findOrFail($id);
 
-        return  InstallmentResource::collection($student->installments);
-    }
+    return InstallmentResource::collection($student->installments);
+}
+
 }

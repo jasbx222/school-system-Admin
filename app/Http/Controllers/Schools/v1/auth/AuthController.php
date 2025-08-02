@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    //تسجيل الدخول
 
     private $auth;
     public function __construct(AuthService $service)

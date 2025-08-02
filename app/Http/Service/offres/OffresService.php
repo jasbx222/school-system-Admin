@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 class OffresService {
 
 
-    public function index (){
+ public function index()
+{
     $schoolId = auth()->user()->school_id;
-    $offers = Offer::where('school_id', $schoolId)->get();
-
+    $offers = Offer::with('student')->where('school_id', $schoolId)->get();
     return OfferResource::collection($offers);
-    }
+}
+
 
     public function store( $request ){
 

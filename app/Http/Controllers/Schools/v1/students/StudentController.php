@@ -10,6 +10,8 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+     //الطلاب
+
     private $student;
     public function __construct(StudentService $student_service)
     {

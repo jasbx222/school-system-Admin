@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ClassController  extends Controller
 {
+    //الصفوف
 
     private $class;
     public function __construct(ClassRoomService $classService)
@@ -29,11 +30,11 @@ class ClassController  extends Controller
     }
 
 
-// this function we dont used right now 
-    public function store(Request $request)
+// جلب المواد التابعه للصف 
+    public function subjects(ClassRoom $class)
     {
 
 
-        return $this->class->store($request);
+        return $this->class->subjects($class);
     }
 }

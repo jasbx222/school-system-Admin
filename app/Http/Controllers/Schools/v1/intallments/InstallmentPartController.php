@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class InstallmentPartController extends Controller
 {
+     //الاقساط اقسام
+
     private $ins;
     public function __construct(InstallmentPartService $installment)
     {

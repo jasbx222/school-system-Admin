@@ -61,10 +61,10 @@ class InstallmentController extends Controller
 
 
 
-    public function getInstallmentsStudent(ModelsStudent $student)
+    public function getInstallmentsStudent( $id)
     {
 
-        return $this->ins->getInstallmentsStudent($student);
+        return $this->ins->getInstallmentsStudent($id);
     }
     
 

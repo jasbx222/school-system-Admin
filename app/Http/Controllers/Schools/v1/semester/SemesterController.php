@@ -7,6 +7,8 @@ use App\Http\Service\semester\SemesterService;
 
 class SemesterController extends Controller
 {
+     //الفصول الدراسية
+
     private $semester;
     public function __construct(SemesterService $semesters)
     {

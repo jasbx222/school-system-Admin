@@ -10,14 +10,14 @@ class ResultService
 {
     //
 
-    public function index()
-    {
-        $school_id = Auth::user()->school_id;
+public function index()
+{
+    $school_id = Auth::user()->school_id;
 
-        $results = Result::where('school_id', $school_id)->get();
+    $results = Result::with('student')->where('school_id', $school_id)->get();
 
-        return ResultResource::collection($results);
-    }
+    return ResultResource::collection($results);
+}
 
 
 
@@ -27,7 +27,7 @@ class ResultService
         $data = $request->validated();
         $data['school_id'] = Auth::user()->school_id;
 
-        $results = Result::create($data);
+        Result::create($data);
        return response()->json(['message'=>'success'],200);
     }
 

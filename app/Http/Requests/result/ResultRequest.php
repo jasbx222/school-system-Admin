@@ -22,11 +22,11 @@ class ResultRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_id' => ['required', 'integer', 'exists:students,id'],
+            'student_id' => ['required', 'exists:students,id'],
             'subjects' => ['required', 'array', 'min:1'],
-            'subjects.*.name' => ['required', 'string'],
+            'subjects.*.title' => ['required', 'string'],
             'subjects.*.degree' => ['required', 'numeric', 'min:0', 'max:100'],
-              'type_exam'=>['string','in:day,month,year'],
+            'type_exam'=>['string','in:day,month,year'],
         ];
     }
 }

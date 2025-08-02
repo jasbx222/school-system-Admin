@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Service\class;
-use App\Models\ClassRoom;
 
+use App\Http\Resources\subjects\SubjectResource;
+use App\Models\ClassRoom;
+use App\Models\Subject;
 
 class ClassRoomService {
 
@@ -29,17 +31,9 @@ public function getAllStudentForClass($class){
     ]);
 }
  
-
-public function store( $request){
- $schoolId = auth()->user()->school_id;
-    $data =$request->validate([
-        'title'=>'string'
-    ]);
-    $data['school_id']=$schoolId;
-    $class =ClassRoom::create($data);
-      return response()->json([
-        'class' => $class
-    ], 201);
+public function subjects($class){
+   
+   return SubjectResource::collection($class->subjects);
 
 }
 }

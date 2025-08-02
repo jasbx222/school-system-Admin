@@ -24,7 +24,7 @@ class StudentRequest extends FormRequest
     return [
         'full_name' => ['required', 'string', 'max:255'],
         'mother_name' => ['required', 'string', 'max:255'],
-        'profile_image_url' => ['nullable', 'string'],
+     'profile_image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'file' => ['nullable', 'url'],
         'status' => ['required', 'in:مستمر,متخرج,منقطع'],
         'gender' => ['required', 'in:ذكر,أنثى'],
