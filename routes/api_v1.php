@@ -2,27 +2,29 @@
 
 use App\Http\Controllers\Schools\v1\auth\AuthController;
 use App\Http\Controllers\Schools\v1\class\ClassController;
-use App\Http\Controllers\Schools\v1\expenses\ExpenseController;
+use App\Http\Controllers\Schools\v1\expenses\receipt\ReceiptController;
 use App\Http\Controllers\Schools\v1\intallments\InstallmentController;
 use App\Http\Controllers\Schools\v1\intallments\InstallmentPartController;
 use App\Http\Controllers\Schools\v1\offers\OffresController;
+
 use App\Http\Controllers\Schools\v1\result\ResultController;
 use App\Http\Controllers\Schools\v1\section\SectionController;
 use App\Http\Controllers\Schools\v1\semester\SemesterController;
 use App\Http\Controllers\Schools\v1\students\StudentController;
 use App\Http\Controllers\Schools\v1\subjects\SubjectController;
+use App\Http\Controllers\Schools\v1\transfer\StudentTransferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
 // this route version one for this project
 
+Route::post('/login',[AuthController::class,'login']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/login',[AuthController::class,'login']);
 
 
 
@@ -46,16 +48,6 @@ Route::get('/attendanceRecords/{studentId}',[StudentController::class,'getAllSta
 
 //expenses 
 
-Route::post('/box',[ExpenseController::class,'store_box']);
-Route::get('/box',[ExpenseController::class,'getAllBoxes']);
-Route::post('/expenses',[ExpenseController::class,'store']);
-Route::get('/expenses',[ExpenseController::class,'index']);
-Route::put('/expenses/{expense}',[ExpenseController::class,'update']);
-Route::delete('delete/expenses/{expense}',[ExpenseController::class,'delete']);
-Route::post('/categores',[ExpenseController::class,'create_category']);
-Route::get('/categores',[ExpenseController::class,'categores']);
-Route::put('/categores/{category}',[ExpenseController::class,'update_category']);
-Route::delete('delete/category/{category}',[ExpenseController::class,'delete_category']);
 
 
 //classes
@@ -129,6 +121,15 @@ Route::apiResource('results',ResultController::class)->names([
 
 Route::apiResource('subjects',SubjectController::class);
 
+
+//student transfer
+Route::apiResource('student-transfers', StudentTransferController::class);
+
+//accounts
+Route::get('accounts', [\App\Http\Controllers\Schools\v1\account\AccountController::class, 'index']);
+
+//receipts
+Route::apiResource('receipts', ReceiptController::class);
 
 
 });

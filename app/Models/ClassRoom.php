@@ -12,6 +12,7 @@ class ClassRoom extends Model
         'title',
         'school_id'
     ];
+    
 
     public function school()
     {
@@ -21,6 +22,9 @@ class ClassRoom extends Model
 {
     return $this->hasMany(Student::class, 'class_room_id');
 }
+  public function student_transfers(){
+        return $this->hasMany(StudentTransfer::class);
+    }
 
     public function classSections()
     {

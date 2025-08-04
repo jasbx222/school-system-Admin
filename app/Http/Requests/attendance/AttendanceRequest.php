@@ -16,6 +16,7 @@ class AttendanceRequest extends FormRequest
         return [
             'student_id' => ['required', 'integer', 'exists:students,id'],
             'status' => ['required', 'string'], 
+            'resone'=> ['nullable', 'string', 'max:500','min:10'],
         ];
     }
 
@@ -25,8 +26,8 @@ class AttendanceRequest extends FormRequest
             'student_id.required' => 'رقم الطالب مطلوب',
             'student_id.integer' => 'رقم الطالب يجب أن يكون رقمًا صحيحًا',
             'student_id.exists' => 'الطالب غير موجود',
-
             'status.required' => 'الحالة مطلوبة',
+            
     
         ];
     }

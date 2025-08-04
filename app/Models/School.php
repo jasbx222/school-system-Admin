@@ -25,14 +25,8 @@ class School extends Model
     {
         return $this->hasMany(ClassRoom::class);
     }
-    public function category_expenses()
-    {
-        return $this->hasMany(CategoryExpense::class);
-    }
-    public function expenses()
-    {
-        return $this->hasMany(Expense::class);
-    }
+    
+  
     public function offers()
     {
         return $this->hasMany(Offer::class);
@@ -45,10 +39,13 @@ class School extends Model
     {
         return $this->students->where('gender', Gender::FEMALE)->count();
     }
-    public function box()
-    {
-        return $this->hasOne(Box::class);
+  
+    public function student_transfers(){
+        return $this->hasMany(StudentTransfer::class);
     }
-
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
+    }
  
 }

@@ -19,7 +19,7 @@ class LoginResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'email'=>$this->email,
-            'school'=>$this -> school->title,
+            'school'=>$this -> school->title?? null,
             'expires_at' =>$this->expires_at?->toDateTimeString(),
 
         ];

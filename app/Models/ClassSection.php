@@ -25,4 +25,7 @@ class ClassSection extends Model
     {
         return $this->hasMany(Student::class);
     }
+    public function student_transfers(){
+        return $this->hasMany(StudentTransfer::class);
+    }
 }

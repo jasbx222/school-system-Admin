@@ -56,7 +56,6 @@ class StudentService
 
         return response()->json([
             'message' => 'تم تسجيل الحضور بنجاح',
-            'data' => $attendance
         ], 201);
     }
 

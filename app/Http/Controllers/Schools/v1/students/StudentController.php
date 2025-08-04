@@ -86,18 +86,24 @@ class StudentController extends Controller
     //جلب حالات الغياب والاجازة لطالب معين
 
 
-    public function getAllStatusCheck($studentId)
-    {
-        $student = Student::with('attendances')->find($studentId);
 
-        $summary = $student->attendanceSummary()->get();
 
-        $mojazCount = $summary->firstWhere('status', 'مجاز')->total ?? 0;
-        $ghaibCount = $summary->firstWhere('status', 'غائب')->total ?? 0;
 
-        return [
-            'mojaz' => $mojazCount,
-            'ghaib' => $ghaibCount,
-        ];
-    }
+   public function getAllStatusCheck($studentId)
+{
+    $student = Student::with('attendances')->find($studentId);
+    $summary = $student->attendanceSummary()->get();
+    $mojazSummary = $summary->firstWhere('status', 'مجاز');
+    $ghaibSummary = $summary->firstWhere('status', 'غائب');
+    $mojazCount = $mojazSummary->total ?? 0;
+    $ghaibCount = $ghaibSummary->total ?? 0;
+    $resoneForMojaz = $mojazSummary->resone ?? 'لا يوجد سبب';
+    $resoneForGhaib = $ghaibSummary->resone ?? 'لا يوجد سبب';
+    return [
+        'mojaz' => $mojazCount,
+        'ghaib' => $ghaibCount,
+        'resoneForMojaz' => $resoneForMojaz,
+        'resoneForGhaib' => $resoneForGhaib,
+    ];
+}
 }

@@ -6,7 +6,11 @@ use App\Models\Student;
 use App\Enums\Gender;
 use App\Enums\StudentStatus;
 use App\Enums\YesOrNoAnswer;
+use App\Models\ClassRoom;
+use App\Models\ClassSection;
+use App\Models\Semester;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
 
 class StudentFactory extends Factory
 {
@@ -15,9 +19,11 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
+
+
             'full_name' => $this->faker->name(),
             'mother_name' => $this->faker->firstNameFemale(),
-            'school_id' =>1,
+            'school_id' => 7,
             'profile_image_url' => $this->faker->imageUrl(),
             'file' => $this->faker->filePath(), // أو null
             'description' => $this->faker->optional()->sentence(),
@@ -26,9 +32,10 @@ class StudentFactory extends Factory
             'orphan' => $this->faker->randomElement(YesOrNoAnswer::SET),
             'has_martyrs_relatives' => $this->faker->randomElement(YesOrNoAnswer::SET),
             'last_school' => $this->faker->company(),
-            'semester_id' => 1,
-            'class_room_id' => 4,
-            'class_section_id' =>2,
+            'semester_id' => DB::table('semesters')->inRandomOrder()->value('id'),
+            'class_room_id' => DB::table('class_rooms')->inRandomOrder()->value('id'),
+            'class_section_id' => DB::table('class_sections')->inRandomOrder()->value('id'),
+
             'birth_day' => $this->faker->date('Y-m-d', '2015-01-01'),
         ];
     }

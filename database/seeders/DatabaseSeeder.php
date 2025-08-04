@@ -20,10 +20,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+     
+        // $this->call(AccountSeeder::class);
         // \App\Models\User::factory(10)->create();
 
      
-        // School::factory(1)->create();
+        // School::factory(10)->create();
         //    User::factory(1)->create();
         // ClassRoom::create([
         //     'title'=>'a',
@@ -32,7 +34,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         // ClassSection::create([
         //     'title'=>'a',
-        //     'class_room_id'=>4,
+        //     'class_room_id'=>1,
 
         //     'school_id'=>1,
         // ]);
@@ -43,6 +45,7 @@ class DatabaseSeeder extends Seeder
         //     'to'=>date(now()->month()),
 
         // ]);
-        Student::factory(50)->create();
+        Student::factory(100)->create();
     }
+
 }
