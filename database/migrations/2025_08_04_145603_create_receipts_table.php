@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('method')->nullable(); 
             $table->string('receipt_number')->unique(); 
             $table->text('notes')->nullable(); 
+            
             $table->unsignedBigInteger('school_id'); 
             $table->timestamps();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');

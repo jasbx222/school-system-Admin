@@ -1,0 +1,136 @@
+{
+  "accounts": [
+    {
+      "code": "4000",
+      "name": "الإيرادات",
+      "type": "income",
+      "children": [
+        {
+          "code": "4100",
+          "name": "رسوم دراسية",
+          "type": "income",
+          "children": [
+            { "code": "4101", "name": "رسوم تسجيل", "type": "income" },
+            { "code": "4102", "name": "رسوم شهرية", "type": "income" },
+            { "code": "4103", "name": "رسوم امتحانات", "type": "income" }
+          ]
+        },
+        {
+          "code": "4200",
+          "name": "إيرادات خدمات",
+          "type": "income",
+          "children": [
+            { "code": "4201", "name": "رسوم نقل (باص)", "type": "income" },
+            { "code": "4202", "name": "بيع الزي المدرسي", "type": "income" },
+            { "code": "4203", "name": "الكافتيريا", "type": "income" },
+            { "code": "4204", "name": "دروس تقوية", "type": "income" }
+          ]
+        },
+        {
+          "code": "4300",
+          "name": "تبرعات",
+          "type": "income",
+          "children": []
+        }
+      ]
+    },
+    {
+      "code": "5000",
+      "name": "المصروفات",
+      "type": "expense",
+      "children": [
+        {
+          "code": "5100",
+          "name": "الرواتب",
+          "type": "expense",
+          "children": [
+            { "code": "5101", "name": "رواتب المعلمين", "type": "expense" },
+            { "code": "5102", "name": "رواتب الموظفين", "type": "expense" },
+            { "code": "5103", "name": "مستحقات متأخرة", "type": "expense" }
+          ]
+        },
+        {
+          "code": "5200",
+          "name": "مصاريف تشغيلية",
+          "type": "expense",
+          "children": [
+            { "code": "5201", "name": "كهرباء", "type": "expense" },
+            { "code": "5202", "name": "ماء", "type": "expense" },
+            { "code": "5203", "name": "إنترنت", "type": "expense" },
+            { "code": "5204", "name": "صيانة", "type": "expense" }
+          ]
+        },
+        {
+          "code": "5300",
+          "name": "مستلزمات",
+          "type": "expense",
+          "children": [
+            { "code": "5301", "name": "قرطاسية", "type": "expense" },
+            { "code": "5302", "name": "كتب", "type": "expense" },
+            { "code": "5303", "name": "أدوات صفية", "type": "expense" }
+          ]
+        },
+        {
+          "code": "5400",
+          "name": "تسويق وإعلانات",
+          "type": "expense",
+          "children": []
+        },
+        {
+          "code": "5500",
+          "name": "مصاريف قانونية",
+          "type": "expense",
+          "children": []
+        }
+      ]
+    },
+    {
+      "code": "6000",
+      "name": "الأصول",
+      "type": "asset",
+      "children": [
+        {
+          "code": "6100",
+          "name": "أصول ثابتة",
+          "type": "asset",
+          "children": [
+            { "code": "6101", "name": "مباني", "type": "asset" },
+            { "code": "6102", "name": "أثاث", "type": "asset" },
+            { "code": "6103", "name": "مختبرات", "type": "asset" },
+            { "code": "6104", "name": "أجهزة كمبيوتر", "type": "asset" }
+          ]
+        },
+        {
+          "code": "6200",
+          "name": "أصول متداولة",
+          "type": "asset",
+          "children": [
+            { "code": "6201", "name": "حسابات بنكية", "type": "asset" },
+            { "code": "6202", "name": "خزينة نقدية", "type": "asset" },
+            { "code": "6203", "name": "ذمم مدينة (أقساط غير مدفوعة)", "type": "asset" }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "7000",
+      "name": "الالتزامات",
+      "type": "liability",
+      "children": [
+        { "code": "7100", "name": "قروض", "type": "liability", "children": [] },
+        { "code": "7200", "name": "ذمم دائنة", "type": "liability", "children": [] },
+        { "code": "7300", "name": "مستحقات موظفين", "type": "liability", "children": [] }
+      ]
+    },
+    {
+      "code": "8000",
+      "name": "حقوق الملكية",
+      "type": "equity",
+      "children": [
+        { "code": "8100", "name": "رأس المال", "type": "equity", "children": [] },
+        { "code": "8200", "name": "أرباح محتجزة", "type": "equity", "children": [] },
+        { "code": "8300", "name": "احتياطي عام", "type": "equity", "children": [] }
+      ]
+    }
+  ]
+}

@@ -19,9 +19,5 @@ class CreateClassSection extends CreateRecord
         return $this->getResource()::getUrl('index');
     }
 
-    protected function mutateFormDataBeforeCreate(array $data): array
-    {
-        $data['school_id'] = auth()->user()->school_id;
-        return $data;
-    }
+ 
 }

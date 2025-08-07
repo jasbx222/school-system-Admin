@@ -23,7 +23,7 @@ class StudentFactory extends Factory
 
             'full_name' => $this->faker->name(),
             'mother_name' => $this->faker->firstNameFemale(),
-            'school_id' => 7,
+            'school_id' => 1,
             'profile_image_url' => $this->faker->imageUrl(),
             'file' => $this->faker->filePath(), // أو null
             'description' => $this->faker->optional()->sentence(),

@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
     $table->id();
+    $table->string('code');
     $table->string('name');
-    $table->string('code')->unique(); // رقم الحساب
-    $table->decimal('balance', 15, 2)->default(0.00);
-    $table->foreignId('parent_id')->nullable()->constrained('accounts')->onDelete('cascade');
+   
+    $table->decimal('balance', 15, 2)->default(0);
+   
+    $table->foreignId('parent_id')->nullable()->constrained('accounts')->cascadeOnDelete();
     $table->timestamps();
 });
+
 
     }
 

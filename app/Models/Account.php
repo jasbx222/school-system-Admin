@@ -9,12 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-    protected $fillable = ['name', 'code', 'parent_id'];
+    protected $fillable = ['name', 'code', 'parent_id', 'school_id','type','balance'];
 
     public function parent()
     {
         return $this->belongsTo(Account::class, 'parent_id');
     }
+public function school()
+{
+    return $this->belongsTo(School::class);
+}
+
 
     public function children()
     {
@@ -30,6 +35,10 @@ public function childrenRecursive()
     public function receipts()
     {
         return $this->hasMany(Receipt::class);
+    }
+    public function paymentVouchers()
+    {
+        return $this->hasMany(PaymentVoucher::class);
     }
 }
 

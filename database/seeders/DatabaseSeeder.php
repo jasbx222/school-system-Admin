@@ -20,32 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-     
-        // $this->call(AccountSeeder::class);
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(1)->create();
 
-     
-        // School::factory(10)->create();
-        //    User::factory(1)->create();
-        // ClassRoom::create([
-        //     'title'=>'a',
-
-        //     'school_id'=>1,
-        // ]);
-        // ClassSection::create([
-        //     'title'=>'a',
-        //     'class_room_id'=>1,
-
-        //     'school_id'=>1,
-        // ]);
-        // Semester::create([
-        //     'title'=>'a',
-        //     'from'=>date(now()),
-        //     'school_id'=>1,
-        //     'to'=>date(now()->month()),
-
-        // ]);
-        Student::factory(100)->create();
+        
     }
 
 }
